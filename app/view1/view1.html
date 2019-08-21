@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="app.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+  <script src="view1.js"></script>
+</head>
+
+<body ng-app='myApp' ng-controller='View1Ctrl'>
+ <!-- ng-controller is a brain of our application.
+  It will hold logics required by the application
+  -->
+  
+  <!--ng-repeat will loop through the taskList -->
+  <div id="container">
+  <br></br>
+
+  
+
+    <div class="row">
+  <div class="col-lg-4" ></div>
+    <div class="col-lg-4" style="background-color:#4292e7; text-align:center">
+	<br></br>
+      <h2 style="color:#fff">To-Do App !!</h2>
+    </div>
+  </div>
+  <div class="row">
+   <div class="col-lg-4" ></div>
+   <div class="col-lg-4" style="background-color:#4292e7; text-align:center">
+   <p style="color:#fff"> Add New To-Do<p>
+   <div>
+  <input id="myText" type='text' ng-model='newTask' placeholder='Enter new task' />
+  <br></br>
+  <button  type="button" class="btn btn-default btn btn-secondary btn-lg" style= "text-align:center" ng-click='addTask(newTask)' >Add</button>
+  <br></br>
+</div>
+    </div>
+  </div>
+  <br></br>
+    <div class="row" id="tasklistid">
+   <div class="col-lg-4" ></div>
+   <div class="col-lg-4" style="background-color:#4292e7; text-align:left">
+       <div ng-repeat='task in taskList'>
+    <!-- A checkbox displaying the progress -->
+    <input type='checkbox'  ng-model='task.done' />
+    <!-- An information of a task -->
+    <span style="color:#fff" ng-class='{done: task.done}'>{{task.task}}</span>
+	<button type="button" class="close"  ng-click ='deleteTask(task)'aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+  </div>
+    </div>
+  </div>
+  <center>
+   <div class="row" id ="tasklistsid" ng-init="load()">
+   <div class="col-lg-4" ></div>
+   <div class="col-lg-4" style="background-color:#4292e7; text-align:left">
+       <div ng-repeat='task in taskList  track by $index'>
+    <!-- A checkbox displaying the progress -->
+    <input type='checkbox'  ng-model='task.done' />
+    <!-- An information of a task -->
+    <span style="color:#fff" ng-class='{done: task.done}'>{{task.task}}</span>
+	<button type="button" class="close"  ng-click ='deleteTask(task)'aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+  </div>
+    </div>
+  </div>
+  </center>
+  
+</div>
+ 
+</body>
+
+</html>

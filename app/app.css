@@ -1,0 +1,22 @@
+body {
+  background-color: #fff;
+}
+.done {
+  text-decoration: line-through;
+}
+.input-form {
+  border-top: dashed 1px;
+  padding-top: 1em;
+  text-align: center;
+}
+.list-to, .wrapper {
+  text-align: center;
+}
+.btn-default {
+  background: #4292e7;
+  color: #fff;
+}
+.btn-default:hover {
+  background: #fff;
+  color: #000;
+}
