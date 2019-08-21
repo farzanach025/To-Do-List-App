@@ -14,11 +14,12 @@ angular.module("myApp.view1", ['ngRoute'])
   .controller("View1Ctrl", ['$scope',
     function($scope) {
       $scope.taskList = [];
-	  $scope.taskLists=[];
+	  $scope.taskLists={};
+	  $scope.onloadArray =[];
 	  
       $scope.addTask = function(task) {
-       
-        $scope.taskList.push({
+		  console.log("inside add task");
+		  $scope.taskList.push({
           done: false,
           task: task
         });
@@ -40,15 +41,26 @@ angular.module("myApp.view1", ['ngRoute'])
        console.log("new array",$scope.taskList);
       };
 	  
+	  $scope.deleteTaskOnload = function(task) {
+        console.log("inside deleteTaskOnload function",task.task);
+		for(var i=0;i<$scope.onloadArray.length;i++){
+			if(task.task==$scope.onloadArray[i].task){
+				$scope.onloadArray.splice(i,1);
+            localStorage.setItem("quentinTarantino", JSON.stringify($scope.onloadArray));
+				i--;
+			}
+		}
+       console.log("new array",$scope.taskList);
+      };
 	    $scope.load = function() {
         console.log("inside load function");
-		document.getElementById("tasklistsid").style.display = "block";
-		document.getElementById("tasklistid").style.display = "none";
+		//document.getElementById("tasklistsid").style.display = "block";
+		//document.getElementById("tasklistid").style.display = "none";
         //localStorage.setItem("quentinTarantino1", JSON.stringify($scope.taskList));
 		var retrievedData = localStorage.getItem("quentinTarantino");
 		console.log("retrievedData : ", retrievedData);
-		$scope.taskList= JSON.parse(retrievedData);
-		console.log("taskList", $scope.taskList);
+		$scope.onloadArray= JSON.parse(retrievedData);
+		console.log("onloadArray", $scope.onloadArray);
   }
     }
   ]);

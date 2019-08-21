@@ -52,22 +52,20 @@
   </div>
     </div>
   </div>
-  <center>
-   <div class="row" id ="tasklistsid" ng-init="load()">
+ <center>
+   <div class="row" id="tasklistsid" ng-init="load()">
    <div class="col-lg-4" ></div>
    <div class="col-lg-4" style="background-color:#4292e7; text-align:left">
-       <div ng-repeat='task in taskList  track by $index'>
-    <!-- A checkbox displaying the progress -->
+       <div ng-repeat='task in onloadArray track by $index'>
     <input type='checkbox'  ng-model='task.done' />
-    <!-- An information of a task -->
     <span style="color:#fff" ng-class='{done: task.done}'>{{task.task}}</span>
-	<button type="button" class="close"  ng-click ='deleteTask(task)'aria-label="Close">
+	<button type="button" class="close"  ng-click ='deleteTaskOnload(task)'aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
   </div>
     </div>
   </div>
-  </center>
+  </center> 
   
 </div>
  
